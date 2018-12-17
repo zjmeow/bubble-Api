@@ -1,0 +1,20 @@
+spring:
+  #datasource
+  datasource:
+    url: jdbc:postgresql://127.0.0.1:5432/bubble?useSSL=true&charset=utf8&serverTimezone=GMT
+    username: Stony
+    password: root
+    driver-class-name: org.postgresql.Driver
+
+  # redis
+  redis:
+    host: 127.0.0.1
+    port: 6379
+mybatis:
+  mapperLocations: classpath:com/zjmeow/bboard/dao/*.xml
+  typeAliasesPackage: com.zjmeow/bboard/model/po
+  configuration:
+    map-underscore-to-camel-case: true
+server:
+  servlet:
+    context-path: /v1
