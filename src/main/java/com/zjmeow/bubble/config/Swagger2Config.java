@@ -21,14 +21,14 @@ public class Swagger2Config {
         return new Docket(DocumentationType.SWAGGER_2)
                 .apiInfo(apiInfo())
                 .select()
-                .apis(RequestHandlerSelectors.basePackage("com.zjmeow.bboard.controller"))
+                .apis(RequestHandlerSelectors.basePackage("com.zjmeow.bubble.controller"))
                 .paths(PathSelectors.any())
                 .build();
     }
 
     private ApiInfo apiInfo() {
         return new ApiInfoBuilder()
-                .title("bboard")
+                .title("bubble")
                 .version("1.0")
                 .build();
 

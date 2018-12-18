@@ -11,6 +11,7 @@ public class BubbleApplicationTests {
 
 	@Test
 	public void contextLoads() {
-	}
+
+    }
 
 }

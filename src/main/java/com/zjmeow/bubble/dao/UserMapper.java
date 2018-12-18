@@ -1,7 +1,12 @@
 package com.zjmeow.bubble.dao;
 
-public interface UserMapper {
-    void selectUserByPhone();
+import com.zjmeow.bubble.model.po.User;
 
-    void createUserByPhone();
+public interface UserMapper {
+    User selectUserByPhone(String phone);
+
+    void createUser(User user);
+
+
+
 }

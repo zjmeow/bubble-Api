@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 <mapper namespace="com.zjmeow.bubble.dao.UserMapper">
-    <resultMap id="BaseResultMap" type="com.zjmeow.bubble.model/po.User">
+    <resultMap id="BaseResultMap" type="com.zjmeow.bubble.model.po.User">
         <id column="uid" jdbcType="INTEGER" property="uid"/>
         <result column="username" jdbcType="VARCHAR" property="username"/>
         <result column="password" jdbcType="VARCHAR" property="password"/>
@@ -9,5 +9,18 @@
         <result column="lng" jdbcType="VARCHAR" property="lng"/>
         <result column="token" jdbcType="VARCHAR" property="token"/>
     </resultMap>
+    <select id="selectUserByPhone" resultType="User">
+        SELECT
+            username,
+            uid,
+            password
+        FROM user
+        WHERE phone = #{phone}
+
+    </select>
+    <insert id="insertUser" parameterType="User">
+        INSERT user (username, password, phone) VALUES (#{user.username}, #{user.password}, #{user.phone})
+
+    </insert>
 
 </mapper>

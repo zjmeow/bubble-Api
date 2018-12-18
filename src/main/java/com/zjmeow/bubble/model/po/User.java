@@ -17,5 +17,6 @@ public class User implements Serializable {
     private String lat;
     private String lng;
     private String token;
+    private String avatar;
 
 }
