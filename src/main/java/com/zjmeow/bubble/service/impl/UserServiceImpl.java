@@ -12,6 +12,7 @@ import lombok.extern.slf4j.Slf4j;
 import org.apache.shiro.SecurityUtils;
 import org.apache.shiro.authc.UsernamePasswordToken;
 import org.apache.shiro.subject.Subject;
+import org.apache.shiro.web.mgt.DefaultWebSecurityManager;
 import org.modelmapper.ModelMapper;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -27,22 +28,24 @@ import org.springframework.util.DigestUtils;
 public class UserServiceImpl implements UserService {
     private final ModelMapper modelMapper;
     private final UserMapper userMapper;
-    private final AuthRealm authRealm;
+    private final DefaultWebSecurityManager securityManager;
 
     @Autowired
     public UserServiceImpl(ModelMapper modelMapper,
                            UserMapper userMapper,
-                           AuthRealm authRealm) {
+                           AuthRealm authRealm, DefaultWebSecurityManager securityManager) {
         this.modelMapper = modelMapper;
         this.userMapper = userMapper;
-        this.authRealm = authRealm;
+        this.securityManager = securityManager;
     }
 
     @Override
     public LoginVO login(LoginDTO loginDTO) {
+
         Subject subject = SecurityUtils.getSubject();
         UsernamePasswordToken token = new UsernamePasswordToken(loginDTO.getPhone(), loginDTO.getPassword());
-        subject.login(token);
+        securityManager.login(subject, token);
+
         LoginVO loginVO = new LoginVO();
         loginVO.setToken(token.toString());
         return loginVO;

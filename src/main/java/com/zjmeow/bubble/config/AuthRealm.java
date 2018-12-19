@@ -34,9 +34,9 @@ public class AuthRealm extends AuthorizingRealm {
         String phone = (String) token.getPrincipal();
         //模拟查询数据库(假数据)
         User user = mapper.selectUserByPhone(phone);
-        String password = user.getPassword();
+        String password = user.getPsw();
         if (password.equals(token.getCredentials())) {
-            SimpleAuthenticationInfo simpleAuthenticationInfo = new SimpleAuthenticationInfo(user.getUid(), password, getName());
+            SimpleAuthenticationInfo simpleAuthenticationInfo = new SimpleAuthenticationInfo(user.getId(), password, getName());
             return simpleAuthenticationInfo;
         } else {
             return null;
