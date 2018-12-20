@@ -1,4 +1,4 @@
-package com.zjmeow.bubble.model.mapper;
+package com.zjmeow.bubble.dao;
 
 import com.zjmeow.bubble.model.po.Bubble;
 import com.zjmeow.bubble.model.po.BubbleExample;

@@ -11,8 +11,8 @@ spring:
     host: 127.0.0.1
     port: 6379
 mybatis:
-  mapperLocations: classpath:com/zjmeow/bboard/dao/*.xml
-  typeAliasesPackage: com.zjmeow/bboard/model/po
+  mapperLocations: classpath:mapper/*.xml
+  typeAliasesPackage: com.zjmeow/bubble/model/po
   configuration:
     map-underscore-to-camel-case: true
 server:

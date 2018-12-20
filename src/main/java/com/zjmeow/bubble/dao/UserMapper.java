@@ -7,6 +7,7 @@ public interface UserMapper {
 
     void createUser(User user);
 
+    User selectPassword(String phone);
 
 
 }

@@ -1,6 +1,5 @@
 package com.zjmeow.bubble.service.impl;
 
-import com.zjmeow.bubble.config.AuthRealm;
 import com.zjmeow.bubble.dao.UserMapper;
 import com.zjmeow.bubble.exception.TokenException;
 import com.zjmeow.bubble.model.dto.LoginDTO;
@@ -8,11 +7,8 @@ import com.zjmeow.bubble.model.dto.RegisterDTO;
 import com.zjmeow.bubble.model.po.User;
 import com.zjmeow.bubble.model.vo.LoginVO;
 import com.zjmeow.bubble.service.UserService;
+import com.zjmeow.bubble.util.JWTUtil;
 import lombok.extern.slf4j.Slf4j;
-import org.apache.shiro.SecurityUtils;
-import org.apache.shiro.authc.UsernamePasswordToken;
-import org.apache.shiro.subject.Subject;
-import org.apache.shiro.web.mgt.DefaultWebSecurityManager;
 import org.modelmapper.ModelMapper;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -28,28 +24,19 @@ import org.springframework.util.DigestUtils;
 public class UserServiceImpl implements UserService {
     private final ModelMapper modelMapper;
     private final UserMapper userMapper;
-    private final DefaultWebSecurityManager securityManager;
 
     @Autowired
     public UserServiceImpl(ModelMapper modelMapper,
-                           UserMapper userMapper,
-                           AuthRealm authRealm, DefaultWebSecurityManager securityManager) {
+                           UserMapper userMapper) {
         this.modelMapper = modelMapper;
         this.userMapper = userMapper;
-        this.securityManager = securityManager;
     }
 
     @Override
     public LoginVO login(LoginDTO loginDTO) {
-
-        Subject subject = SecurityUtils.getSubject();
-        UsernamePasswordToken token = new UsernamePasswordToken(loginDTO.getPhone(), loginDTO.getPassword());
-        securityManager.login(subject, token);
-
         LoginVO loginVO = new LoginVO();
-        loginVO.setToken(token.toString());
+        loginVO.setToken(JWTUtil.sign(loginDTO.getPhone(), loginDTO.getPassword()));
         return loginVO;
-
     }
 
     @Override

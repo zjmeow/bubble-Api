@@ -28,6 +28,7 @@ public class AuthController {
 
     @GetMapping("/login")
     ApiResponse<LoginVO> login(LoginDTO loginDTO) {
+
         return RestResultGenerator.genResult(userService.login(loginDTO), "ok");
 
     }
@@ -36,6 +37,8 @@ public class AuthController {
     @GetMapping("/register")
     ApiResponse<RegisterVO> register(RegisterDTO registerDTO) {
 //        return userService.register(registerDTO);
+//        Subject subject = SecurityUtils.getSubject();
+//        System.out.println(subject.isAuthenticated());
 
         return null;
     }
