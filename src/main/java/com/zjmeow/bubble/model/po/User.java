@@ -3,9 +3,10 @@ package com.zjmeow.bubble.model.po;
 import lombok.Data;
 
 import java.io.Serializable;
+import java.util.Date;
 
 /**
- * @author 
+ * @author
  */
 @Data
 public class User implements Serializable {
@@ -14,9 +15,9 @@ public class User implements Serializable {
     private String username;
     private Integer id;
 
-    private String lat;
+    private Double lat;
 
-    private String lng;
+    private Double lng;
 
     private String token;
 
@@ -25,4 +26,6 @@ public class User implements Serializable {
     private String info;
 
     private String phone;
+
+    private Date loginTime;
 }

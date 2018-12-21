@@ -56,4 +56,12 @@
         WHERE id = #{id};
     </update>
 
+    <update id="updateLocation">
+        UPDATE public.user
+        SET location   = ST_GeometryFromText(#{location}, 4326),
+            login_time = #{loginTime}
+        WHERE id = #{id}
+    </update>
+
+
 </mapper>

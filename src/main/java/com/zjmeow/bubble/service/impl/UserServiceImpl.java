@@ -1,11 +1,9 @@
 package com.zjmeow.bubble.service.impl;
 
 import com.zjmeow.bubble.dao.UserMapper;
-import com.zjmeow.bubble.model.dto.AvatarDTO;
-import com.zjmeow.bubble.model.dto.InfoDTO;
-import com.zjmeow.bubble.model.dto.LoginDTO;
-import com.zjmeow.bubble.model.dto.RegisterDTO;
+import com.zjmeow.bubble.model.dto.*;
 import com.zjmeow.bubble.model.po.User;
+import com.zjmeow.bubble.model.po.UserLocation;
 import com.zjmeow.bubble.model.vo.LoginVO;
 import com.zjmeow.bubble.service.UserService;
 import com.zjmeow.bubble.util.JWTUtil;
@@ -67,5 +65,14 @@ public class UserServiceImpl implements UserService {
         user.setId(JWTUtil.getCurrentUserId());
         userMapper.updateInfo(user);
 
+    }
+
+    @Override
+    public void updateLocation(LocationDTO locationDTO) {
+        UserLocation location = new UserLocation();
+        location.setId(JWTUtil.getCurrentUserId());
+        location.setLocation("POINT(" + locationDTO.getLng() + " " + locationDTO.getLat() + ")");
+        location.setLoginTime(locationDTO.getLoginTime());
+        userMapper.updateLocation(location);
     }
 }

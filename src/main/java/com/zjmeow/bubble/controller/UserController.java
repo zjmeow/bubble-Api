@@ -2,6 +2,7 @@ package com.zjmeow.bubble.controller;
 
 import com.zjmeow.bubble.model.dto.AvatarDTO;
 import com.zjmeow.bubble.model.dto.InfoDTO;
+import com.zjmeow.bubble.model.dto.LocationDTO;
 import com.zjmeow.bubble.model.vo.ApiResponse;
 import com.zjmeow.bubble.service.UserService;
 import com.zjmeow.bubble.util.RestResultGenerator;
@@ -35,5 +36,12 @@ public class UserController {
         userService.updateInfo(infoDTO);
         return RestResultGenerator.genResult("修改成功", "ok");
     }
+
+    @PostMapping("/location")
+    ApiResponse<String> updateLocation(LocationDTO locationDTO) {
+        userService.updateLocation(locationDTO);
+        return RestResultGenerator.genResult("上传成功", "ok");
+    }
+
 
 }
