@@ -7,7 +7,7 @@ public interface UserMapper {
 
     void insertUser(User user);
 
-    User selectPassword(String phone);
+    User selectUserPasswordById(Integer id);
 
 
 }

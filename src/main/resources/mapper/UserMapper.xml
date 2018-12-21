@@ -13,18 +13,39 @@
         <result column="phone" jdbcType="VARCHAR" property="phone"/>
     </resultMap>
 
-    <select id="selectPassword" resultType="User">
-        SELECT psw
+    <select id="selectUserByPhone" resultType="User">
+        SELECT
+            psw,
+            id
         FROM public.user
         WHERE phone = #{phone}
     </select>
 
+    <select id="selectUserPasswordById" resultType="User">
+        SELECT psw
+        FROM public.user
+        WHERE id = #{id}
+    </select>
+
+    <select id="selectUserDetailById" resultType="User">
+        SELECT
+        username,
+        avatar,
+        info,
+        lat,
+        lng
+        FROM public.user
+        WHERE id = #{id}
+    </select>
+
+
     <insert id="insertUser">
         INSERT INTO public.user (username, psw, phone) VALUES (#{username}, #{psw}, #{phone});
     </insert>
+
+
     <!--<update id="updateAvatar">-->
     <!--UPDATE public.user avatar -->
     <!--WHERE id = #{id};-->
-
     <!--</update>-->
 </mapper>

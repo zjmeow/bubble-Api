@@ -10,13 +10,15 @@ import com.auth0.jwt.JWTVerifier;
 import com.auth0.jwt.algorithms.Algorithm;
 import com.auth0.jwt.exceptions.JWTDecodeException;
 import com.auth0.jwt.interfaces.DecodedJWT;
+import org.apache.shiro.SecurityUtils;
+import org.apache.shiro.subject.Subject;
 
 import java.util.Date;
 
 public class JWTUtil {
 
     // 过期时间5分钟
-    private static final long EXPIRE_TIME = 5 * 60 * 1000;
+    private static final long EXPIRE_TIME = 100 * 60 * 1000;
 
     /**
      * 校验token是否正确
@@ -72,4 +74,11 @@ public class JWTUtil {
             return null;
         }
     }
+
+    public static String getCurrentUserId() {
+        Subject subject = SecurityUtils.getSubject();
+        return JWTUtil.getUsername(subject.getPrincipal().toString());
+    }
+
+
 }

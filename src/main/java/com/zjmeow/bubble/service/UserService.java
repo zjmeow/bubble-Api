@@ -15,4 +15,5 @@ public interface UserService {
     LoginVO login(LoginDTO loginDTO);
 
     void register(RegisterDTO registerDTO);
+
 }
