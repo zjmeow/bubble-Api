@@ -5,6 +5,7 @@ import com.zjmeow.bubble.model.dto.*;
 import com.zjmeow.bubble.model.po.User;
 import com.zjmeow.bubble.model.po.UserLocation;
 import com.zjmeow.bubble.model.vo.LoginVO;
+import com.zjmeow.bubble.model.vo.UserDetailVO;
 import com.zjmeow.bubble.service.UserService;
 import com.zjmeow.bubble.util.JWTUtil;
 import lombok.extern.slf4j.Slf4j;
@@ -74,5 +75,11 @@ public class UserServiceImpl implements UserService {
         location.setLocation("POINT(" + locationDTO.getLng() + " " + locationDTO.getLat() + ")");
         location.setLoginTime(locationDTO.getLoginTime());
         userMapper.updateLocation(location);
+    }
+
+    @Override
+    public UserDetailVO selectUserById(Integer id) {
+        User user = userMapper.selectUserDetailById(id);
+        return modelMapper.map(user, UserDetailVO.class);
     }
 }

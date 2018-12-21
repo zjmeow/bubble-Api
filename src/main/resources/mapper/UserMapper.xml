@@ -32,8 +32,8 @@
         username,
         avatar,
         info,
-        lat,
-        lng
+        id,
+        login_time
         FROM public.user
         WHERE id = #{id}
     </select>
@@ -62,6 +62,5 @@
             login_time = #{loginTime}
         WHERE id = #{id}
     </update>
-
 
 </mapper>

@@ -16,4 +16,5 @@ public interface UserMapper {
 
     void updateLocation(UserLocation user);
 
+    User selectUserDetailById(Integer id);
 }
