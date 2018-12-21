@@ -1,6 +1,8 @@
 package com.zjmeow.bubble.service.impl;
 
 import com.zjmeow.bubble.dao.UserMapper;
+import com.zjmeow.bubble.model.dto.AvatarDTO;
+import com.zjmeow.bubble.model.dto.InfoDTO;
 import com.zjmeow.bubble.model.dto.LoginDTO;
 import com.zjmeow.bubble.model.dto.RegisterDTO;
 import com.zjmeow.bubble.model.po.User;
@@ -51,4 +53,13 @@ public class UserServiceImpl implements UserService {
     }
 
 
+    @Override
+    public void uploadAvatar(AvatarDTO avatarDTO) {
+
+    }
+
+    @Override
+    public void updateInfo(InfoDTO infoDTO) {
+
+    }
 }

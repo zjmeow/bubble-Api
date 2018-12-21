@@ -1,5 +1,7 @@
 package com.zjmeow.bubble.service;
 
+import com.zjmeow.bubble.model.dto.AvatarDTO;
+import com.zjmeow.bubble.model.dto.InfoDTO;
 import com.zjmeow.bubble.model.dto.LoginDTO;
 import com.zjmeow.bubble.model.dto.RegisterDTO;
 import com.zjmeow.bubble.model.vo.LoginVO;
@@ -16,4 +18,7 @@ public interface UserService {
 
     void register(RegisterDTO registerDTO);
 
+    void uploadAvatar(AvatarDTO avatarDTO);
+
+    void updateInfo(InfoDTO infoDTO);
 }
