@@ -44,8 +44,16 @@
     </insert>
 
 
-    <!--<update id="updateAvatar">-->
-    <!--UPDATE public.user avatar -->
-    <!--WHERE id = #{id};-->
-    <!--</update>-->
+    <update id="updateAvatar">
+        UPDATE public.user
+        SET avatar = #{avatar}
+        WHERE id = #{id};
+    </update>
+
+    <update id="updateInfo">
+        UPDATE public.user
+        SET info = #{info}
+        WHERE id = #{id};
+    </update>
+
 </mapper>

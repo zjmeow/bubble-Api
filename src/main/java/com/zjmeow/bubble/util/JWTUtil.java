@@ -75,9 +75,9 @@ public class JWTUtil {
         }
     }
 
-    public static String getCurrentUserId() {
+    public static Integer getCurrentUserId() {
         Subject subject = SecurityUtils.getSubject();
-        return JWTUtil.getUsername(subject.getPrincipal().toString());
+        return Integer.valueOf(JWTUtil.getUsername(subject.getPrincipal().toString()));
     }
 
 

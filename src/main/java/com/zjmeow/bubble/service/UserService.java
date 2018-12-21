@@ -18,7 +18,7 @@ public interface UserService {
 
     void register(RegisterDTO registerDTO);
 
-    void uploadAvatar(AvatarDTO avatarDTO);
+    void updateAvatar(AvatarDTO avatarDTO);
 
     void updateInfo(InfoDTO infoDTO);
 }

@@ -9,5 +9,8 @@ public interface UserMapper {
 
     User selectUserPasswordById(Integer id);
 
+    void updateAvatar(User user);
+
+    void updateInfo(User user);
 
 }

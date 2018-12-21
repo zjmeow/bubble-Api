@@ -54,12 +54,18 @@ public class UserServiceImpl implements UserService {
 
 
     @Override
-    public void uploadAvatar(AvatarDTO avatarDTO) {
+    public void updateAvatar(AvatarDTO avatarDTO) {
+        User user = modelMapper.map(avatarDTO, User.class);
+        user.setId(JWTUtil.getCurrentUserId());
+        userMapper.updateAvatar(user);
 
     }
 
     @Override
     public void updateInfo(InfoDTO infoDTO) {
+        User user = modelMapper.map(infoDTO, User.class);
+        user.setId(JWTUtil.getCurrentUserId());
+        userMapper.updateInfo(user);
 
     }
 }

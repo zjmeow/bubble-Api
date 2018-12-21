@@ -26,7 +26,7 @@ public class UserController {
 
     @PostMapping("/avatar")
     ApiResponse<String> uploadAvatar(AvatarDTO avatarDTO) {
-        userService.uploadAvatar(avatarDTO);
+        userService.updateAvatar(avatarDTO);
         return RestResultGenerator.genResult("上传成功", "ok");
     }
 
