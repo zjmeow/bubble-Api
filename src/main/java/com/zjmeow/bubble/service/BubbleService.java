@@ -1,5 +1,7 @@
 package com.zjmeow.bubble.service;
 
+import com.zjmeow.bubble.model.dto.BubbleDTO;
+
 /**
  * @description: 地图分享
  * @author: zjm
@@ -7,4 +9,5 @@ package com.zjmeow.bubble.service;
 
 
 public interface BubbleService {
+    void uploadBubble(BubbleDTO bubbleDTO);
 }
