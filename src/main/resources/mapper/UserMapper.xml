@@ -29,13 +29,24 @@
 
     <select id="selectUserDetailById" resultType="User">
         SELECT
-        username,
-        avatar,
-        info,
-        id,
-        login_time
+            username,
+            avatar,
+            info,
+            id,
+            login_time
         FROM public.user
         WHERE id = #{id}
+    </select>
+
+    <select id="selectUserByLocation" resultType="User">
+        SELECT
+            username,
+            avatar,
+            id
+        FROM
+            public.user
+        ORDER BY #{point}
+        LIMIT 10;
     </select>
 
 
@@ -62,5 +73,6 @@
             login_time = #{loginTime}
         WHERE id = #{id}
     </update>
+
 
 </mapper>

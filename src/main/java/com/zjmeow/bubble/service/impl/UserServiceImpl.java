@@ -6,13 +6,17 @@ import com.zjmeow.bubble.model.po.User;
 import com.zjmeow.bubble.model.po.UserLocation;
 import com.zjmeow.bubble.model.vo.LoginVO;
 import com.zjmeow.bubble.model.vo.UserDetailVO;
+import com.zjmeow.bubble.model.vo.UserMapVO;
 import com.zjmeow.bubble.service.UserService;
 import com.zjmeow.bubble.util.JWTUtil;
 import lombok.extern.slf4j.Slf4j;
 import org.apache.shiro.authc.AuthenticationException;
 import org.modelmapper.ModelMapper;
+import org.modelmapper.TypeToken;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
+
+import java.util.List;
 
 
 /**
@@ -81,5 +85,13 @@ public class UserServiceImpl implements UserService {
     public UserDetailVO selectUserById(Integer id) {
         User user = userMapper.selectUserDetailById(id);
         return modelMapper.map(user, UserDetailVO.class);
+    }
+
+    @Override
+    public List<UserMapVO> selectUserByLocation(Double lng, Double lat) {
+        String point = "location<-> SRID=4326;POINT(" + lng + " " + lat + ")::geometry";
+        List<User> users = userMapper.selectUserByLocation(point);
+        return modelMapper.map(users, new TypeToken<List<UserMapVO>>() {
+        }.getType());
     }
 }
