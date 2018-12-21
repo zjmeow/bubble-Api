@@ -10,9 +10,21 @@
         <result column="token" jdbcType="VARCHAR" property="token"/>
         <result column="avatar" jdbcType="VARCHAR" property="avatar"/>
         <result column="info" jdbcType="VARCHAR" property="info"/>
+        <result column="phone" jdbcType="VARCHAR" property="phone"/>
     </resultMap>
 
     <select id="selectPassword" resultType="User">
-        SELECT psw FROM bubble_user WHERE phone = #{phone}
+        SELECT psw
+        FROM public.user
+        WHERE phone = #{phone}
     </select>
+
+    <insert id="insertUser">
+        INSERT INTO public.user (username, psw, phone) VALUES (#{username}, #{psw}, #{phone});
+    </insert>
+    <!--<update id="updateAvatar">-->
+    <!--UPDATE public.user avatar -->
+    <!--WHERE id = #{id};-->
+
+    <!--</update>-->
 </mapper>

@@ -5,7 +5,7 @@ import com.zjmeow.bubble.model.po.User;
 public interface UserMapper {
     User selectUserByPhone(String phone);
 
-    void createUser(User user);
+    void insertUser(User user);
 
     User selectPassword(String phone);
 

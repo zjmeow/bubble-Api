@@ -16,7 +16,7 @@ public class RegisterDTO {
     private String username;
     @NotNull
     @ApiModelProperty(required = true, notes = "密码", example = "123456")
-    private String password;
+    private String psw;
     @NotNull
     @ApiModelProperty(required = true, notes = "电话号码", example = "13101411913")
     private String phone;
