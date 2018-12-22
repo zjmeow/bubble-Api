@@ -6,14 +6,26 @@
         VALUES (#{title}, #{content}, #{pic}, #{userId}, ST_GeometryFromText(#{point}, 4326));
     </insert>
     <select id="selectBubbleById" resultType="Bubble">
-        SELECT *
+        SELECT
+        id,
+        title,
+        pic,
+        created_time,
+        st_x(location) AS lng,
+        st_y(location) AS lat
         FROM bubble
         WHERE id = #{id}
     </select>
 
 
     <select id="selectBubbleByLocation" resultType="Bubble">
-        SELECT *
+        SELECT
+        id,
+        title,
+        pic,
+        created_time,
+        st_x(location) AS lng,
+        st_y(location) AS lat
         FROM
             bubble
         ORDER BY #{point}

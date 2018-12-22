@@ -16,6 +16,5 @@ public class BubbleMapVO {
     private Double lng;
     private String title;
     private String pic;
-    private Integer userId;
     private Date createdTime;
 }

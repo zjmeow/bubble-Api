@@ -15,4 +15,6 @@ public class UserMapVO {
     private Integer id;
     private String avatar;
     private Date loginTime;
+    private Double lat;
+    private Double lng;
 }

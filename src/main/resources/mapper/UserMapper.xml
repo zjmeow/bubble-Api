@@ -42,7 +42,9 @@
         SELECT
             username,
             avatar,
-            id
+        id,
+        st_x(location) AS lng,
+        st_y(location) AS lat
         FROM
             public.user
         ORDER BY #{point}
