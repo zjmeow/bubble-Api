@@ -1,19 +1,25 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 <mapper namespace="com.zjmeow.bubble.dao.BubbleMapper">
-    <resultMap id="BaseResultMap" type="com.zjmeow.bubble.model.po.Bubble">
-        <id column="id" jdbcType="INTEGER" property="id"/>
-        <result column="lat" jdbcType="DOUBLE" property="lat"/>
-        <result column="lng" jdbcType="DOUBLE" property="lng"/>
-        <result column="title" jdbcType="VARCHAR" property="title"/>
-        <result column="content" jdbcType="VARCHAR" property="content"/>
-        <result column="pic" jdbcType="VARCHAR" property="pic"/>
-        <result column="user_id" jdbcType="INTEGER" property="userId"/>
-        <result column="created_time" jdbcType="TIMESTAMP" property="createdTime"/>
-        <result column="visible" jdbcType="BIT" property="visible"/>
-        <result column="tap" jdbcType="INTEGER" property="tap"/>
-        <result column="deadline" jdbcType="TIMESTAMP" property="deadline"/>
-    </resultMap>
+    <insert id="insert">
+        INSERT INTO bubble (title, content, pic, user_id, location)
+        VALUES (#{title}, #{content}, #{pic}, #{userId}, ST_GeometryFromText(#{point}, 4326));
+    </insert>
+    <select id="selectBubbleById" resultType="Bubble">
+        SELECT *
+        FROM bubble
+        WHERE id = #{id}
+    </select>
+
+
+    <select id="selectBubbleByLocation" resultType="Bubble">
+        SELECT *
+        FROM
+            bubble
+        ORDER BY #{point}
+        LIMIT 10;
+
+    </select>
 
 
 </mapper>
