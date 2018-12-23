@@ -8,6 +8,7 @@ import com.zjmeow.bubble.model.dto.BubbleDTO;
 import com.zjmeow.bubble.model.po.Bubble;
 import com.zjmeow.bubble.model.po.User;
 import com.zjmeow.bubble.model.vo.BubbleDetailVO;
+import com.zjmeow.bubble.model.vo.BubbleListVO;
 import com.zjmeow.bubble.model.vo.BubbleMapVO;
 import com.zjmeow.bubble.service.BubbleService;
 import com.zjmeow.bubble.util.JWTUtil;
@@ -70,5 +71,12 @@ public class BubbleServiceImpl implements BubbleService {
         bubbleDetailVO.setAvatar(user.getAvatar());
         bubbleDetailVO.setUsername(user.getUsername());
         return bubbleDetailVO;
+    }
+
+    @Override
+    public List<BubbleListVO> selectBubbleByUserId(Integer userId) {
+        List<Bubble> bubbles = bubbleMapper.selectBubbleByUserId(userId);
+        return modelMapper.map(bubbles, new TypeToken<List<BubbleListVO>>() {
+        }.getType());
     }
 }

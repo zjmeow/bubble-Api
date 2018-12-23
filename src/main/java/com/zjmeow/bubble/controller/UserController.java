@@ -46,6 +46,7 @@ public class UserController {
         return RestResultGenerator.genResult("上传成功", "ok");
     }
 
+    // 获取附近的用户
     @GetMapping("/around")
     ApiResponse<List<UserMapVO>> getAround(@RequestParam("lng") @NotNull Double lng,
                                            @RequestParam("lat") @NotNull Double lat) {
@@ -53,10 +54,10 @@ public class UserController {
         return RestResultGenerator.genResult(userService.selectUserByLocation(lng, lat), "ok");
     }
 
-    // 获取附近的用户
+
     @GetMapping("/detail")
-    ApiResponse<UserDetailVO> getUserDetail(@RequestParam("userId") @NotNull Integer userId) {
-        UserDetailVO userDetailVO = userService.selectUserById(userId);
+    ApiResponse<UserDetailVO> getUserDetail(@RequestParam("id") @NotNull Integer id) {
+        UserDetailVO userDetailVO = userService.selectUserById(id);
         return RestResultGenerator.genResult(userDetailVO, "ok");
     }
 }

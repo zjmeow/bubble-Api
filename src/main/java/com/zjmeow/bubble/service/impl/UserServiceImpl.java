@@ -1,6 +1,7 @@
 package com.zjmeow.bubble.service.impl;
 
 import com.zjmeow.bubble.dao.UserMapper;
+import com.zjmeow.bubble.exception.ResourceNotFoundException;
 import com.zjmeow.bubble.model.dto.*;
 import com.zjmeow.bubble.model.po.User;
 import com.zjmeow.bubble.model.po.UserLocation;
@@ -83,6 +84,9 @@ public class UserServiceImpl implements UserService {
     @Override
     public UserDetailVO selectUserById(Integer id) {
         User user = userMapper.selectUserDetailById(id);
+        if (user == null) {
+            throw new ResourceNotFoundException();
+        }
         return modelMapper.map(user, UserDetailVO.class);
     }
 

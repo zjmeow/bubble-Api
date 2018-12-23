@@ -35,5 +35,21 @@
         LIMIT 10;
     </select>
 
+    <select id="selectBubbleByUserId" resultType="Bubble">
+        SELECT
+            id,
+            title,
+            pic,
+            created_time,
+            tap,
+            content,
+            st_x(location) AS lng,
+            st_y(location) AS lat
+        FROM
+            bubble
+        WHERE user_id = #{userId}
+
+    </select>
+
 
 </mapper>

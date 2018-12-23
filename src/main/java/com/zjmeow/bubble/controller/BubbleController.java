@@ -3,6 +3,7 @@ package com.zjmeow.bubble.controller;
 import com.zjmeow.bubble.model.dto.BubbleDTO;
 import com.zjmeow.bubble.model.vo.ApiResponse;
 import com.zjmeow.bubble.model.vo.BubbleDetailVO;
+import com.zjmeow.bubble.model.vo.BubbleListVO;
 import com.zjmeow.bubble.model.vo.BubbleMapVO;
 import com.zjmeow.bubble.service.BubbleService;
 import com.zjmeow.bubble.util.RestResultGenerator;
@@ -46,6 +47,13 @@ public class BubbleController {
     ApiResponse<List<BubbleMapVO>> aroundBubble(Double lng, Double lat) {
         List<BubbleMapVO> bubbleMapVOS = bubbleService.selectBubbleByLocation(lng, lat);
         return RestResultGenerator.genResult(bubbleMapVOS, "ok");
+    }
+
+
+    @GetMapping("/user")
+    ApiResponse<List<BubbleListVO>> getBubbleByUserId(Integer userId) {
+        List<BubbleListVO> bubbleListVOS = bubbleService.selectBubbleByUserId(userId);
+        return RestResultGenerator.genResult(bubbleListVOS, "ok");
     }
 
 }
