@@ -13,9 +13,7 @@ import java.util.Date;
 public class CommentVO {
     private Date createdTime;
     private String avatar;
-    private int id;
-    private int bubbleId;
-    private int userId;
-    private int tap;
+    private Integer userId;
+    private Integer tap;
     private String content;
 }

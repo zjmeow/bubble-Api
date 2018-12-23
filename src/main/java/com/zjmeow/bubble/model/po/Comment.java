@@ -13,10 +13,10 @@ import java.util.Date;
 public class Comment {
     private Date createdTime;
     private String avatar;
-    private int id;
-    private int bubbleId;
-    private int userId;
-    private int tap;
+    private Integer id;
+    private Integer bubbleId;
+    private Integer userId;
+    private Integer tap;
     private String content;
 
 }

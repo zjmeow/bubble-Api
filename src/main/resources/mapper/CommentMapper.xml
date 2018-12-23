@@ -3,11 +3,15 @@
 <mapper namespace="com.zjmeow.bubble.dao.CommentMapper">
     <select id="selectCommentByBubble" resultType="Comment">
         SELECT
-            public.comment.*,
+        public.comment.created_time,
+        public.comment.user_id,
+        public.comment.content,
+        public.comment.tap,
             public.user.avatar
         FROM public.comment, public.user
         WHERE bubble_id = #{id} AND user_id = public.user.id
     </select>
+
     <insert id="insertComment">
         INSERT INTO public.comment (bubble_id, user_id, content) VALUES (#{bubbleId}, #{userId}, #{content})
     </insert>
