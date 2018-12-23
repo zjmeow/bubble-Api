@@ -9,7 +9,7 @@ import lombok.Data;
 
 @Data
 public class LoginVO {
-    private Integer uid;
+    private Integer id;
     private String username;
     private String token;
 }

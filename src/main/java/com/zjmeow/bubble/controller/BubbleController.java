@@ -36,6 +36,8 @@ public class BubbleController {
     @GetMapping("/bubble/detail")
     ApiResponse<BubbleDetailVO> bubbleDetail(Integer id) {
         BubbleDetailVO bubbleDetailVO = bubbleService.getBubbleDetail(id);
+
+
         return RestResultGenerator.genResult(bubbleDetailVO, "ok");
     }
 

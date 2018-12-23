@@ -16,7 +16,8 @@
     <select id="selectUserByPhone" resultType="User">
         SELECT
             psw,
-            id
+        id,
+        username
         FROM public.user
         WHERE phone = #{phone}
     </select>

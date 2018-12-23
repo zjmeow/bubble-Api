@@ -11,6 +11,10 @@
         title,
         pic,
         created_time,
+        content,
+        user_id,
+        tap,
+        deadline,
         st_x(location) AS lng,
         st_y(location) AS lat
         FROM bubble

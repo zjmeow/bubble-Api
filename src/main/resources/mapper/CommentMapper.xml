@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.zjmeow.bubble.dao.CommentMapper">
+    <select id="selectCommentByBubble" resultType="Comment">
+        SELECT
+            public.comment.*,
+            public.user.avatar
+        FROM public.comment, public.user
+        WHERE bubble_id = #{id} AND user_id = public.user.id
+    </select>
+
+
+</mapper>

@@ -44,14 +44,14 @@ public class UserServiceImpl implements UserService {
         User user = userMapper.selectUserByPhone(loginDTO.getPhone());
         if (user == null) throw new AuthenticationException();
         loginVO.setToken(JWTUtil.sign(user.getId() + "", loginDTO.getPassword()));
+        loginVO.setId(user.getId());
+        loginVO.setUsername(user.getUsername());
         return loginVO;
     }
 
     @Override
     public void register(RegisterDTO registerDTO) {
-        System.out.println(JWTUtil.getCurrentUserId());
         User user = modelMapper.map(registerDTO, User.class);
-        log.info(user.toString());
         userMapper.insertUser(user);
     }
 

@@ -1,11 +1,14 @@
 package com.zjmeow.bubble.service.impl;
 
 import com.zjmeow.bubble.dao.BubbleMapper;
+import com.zjmeow.bubble.dao.CommentMapper;
 import com.zjmeow.bubble.exception.ResourceNotFoundException;
 import com.zjmeow.bubble.model.dto.BubbleDTO;
 import com.zjmeow.bubble.model.po.Bubble;
+import com.zjmeow.bubble.model.po.Comment;
 import com.zjmeow.bubble.model.vo.BubbleDetailVO;
 import com.zjmeow.bubble.model.vo.BubbleMapVO;
+import com.zjmeow.bubble.model.vo.CommentVO;
 import com.zjmeow.bubble.service.BubbleService;
 import com.zjmeow.bubble.util.JWTUtil;
 import org.modelmapper.ModelMapper;
@@ -24,12 +27,15 @@ import java.util.List;
 public class BubbleServiceImpl implements BubbleService {
     private final ModelMapper modelMapper;
     private final BubbleMapper bubbleMapper;
+    private final CommentMapper commentMapper;
 
     @Autowired
     public BubbleServiceImpl(ModelMapper modelMapper,
-                             BubbleMapper bubbleMapper) {
+                             BubbleMapper bubbleMapper,
+                             CommentMapper commentMapper) {
         this.modelMapper = modelMapper;
         this.bubbleMapper = bubbleMapper;
+        this.commentMapper = commentMapper;
     }
 
     @Override
@@ -55,6 +61,11 @@ public class BubbleServiceImpl implements BubbleService {
         if (bubble == null) {
             throw new ResourceNotFoundException();
         }
-        return modelMapper.map(bubble, BubbleDetailVO.class);
+        List<Comment> comments = commentMapper.selectCommentByBubble(id);
+        BubbleDetailVO bubbleDetailVO = modelMapper.map(bubble, BubbleDetailVO.class);
+        List<CommentVO> commentVOS = modelMapper.map(comments, new TypeToken<List<CommentVO>>() {
+        }.getType());
+        bubbleDetailVO.setComments(commentVOS);
+        return bubbleDetailVO;
     }
 }

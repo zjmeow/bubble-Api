@@ -8,6 +8,7 @@ import com.zjmeow.bubble.service.UserService;
 import com.zjmeow.bubble.util.RestResultGenerator;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
 
@@ -15,7 +16,7 @@ import org.springframework.web.bind.annotation.RestController;
  * @description: 登录注册控制器
  * @author: zjm
  **/
-
+@RequestMapping(value = "/auth")
 @RestController
 public class AuthController {
     private final UserService userService;
