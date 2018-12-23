@@ -2,6 +2,8 @@ package com.zjmeow.bubble.model.po;
 
 import lombok.Data;
 
+import java.util.Date;
+
 /**
  * @description: 评论PO
  * @author: zjm
@@ -9,6 +11,7 @@ import lombok.Data;
 
 @Data
 public class Comment {
+    private Date createdTime;
     private String avatar;
     private int id;
     private int bubbleId;

@@ -8,6 +8,9 @@
         FROM public.comment, public.user
         WHERE bubble_id = #{id} AND user_id = public.user.id
     </select>
+    <insert id="insertComment">
+        INSERT INTO public.comment (bubble_id, user_id, content) VALUES (#{bubbleId}, #{userId}, #{content})
+    </insert>
 
 
 </mapper>

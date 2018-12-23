@@ -13,4 +13,5 @@ import java.util.List;
 public interface CommentMapper {
     List<Comment> selectCommentByBubble(Integer bubbleId);
 
+    void insertComment(Comment comment);
 }
