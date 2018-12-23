@@ -21,7 +21,6 @@
         WHERE id = #{id}
     </select>
 
-
     <select id="selectBubbleByLocation" resultType="Bubble">
         SELECT
         id,
@@ -34,7 +33,6 @@
             bubble
         ORDER BY #{point}
         LIMIT 10;
-
     </select>
 
 

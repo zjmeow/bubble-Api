@@ -72,8 +72,7 @@
 
     <update id="updateLocation">
         UPDATE public.user
-        SET location   = ST_GeometryFromText(#{location}, 4326),
-            login_time = #{loginTime}
+        SET location = ST_GeometryFromText(#{location}, 4326)
         WHERE id = #{id}
     </update>
 

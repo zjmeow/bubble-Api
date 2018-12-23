@@ -24,4 +24,5 @@ public class Bubble implements Serializable {
     private Date deadline;
     private String point;
 
+
 }

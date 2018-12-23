@@ -9,6 +9,7 @@ import com.zjmeow.bubble.util.RestResultGenerator;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
 import java.util.List;
@@ -18,6 +19,7 @@ import java.util.List;
  * @author: zjm
  **/
 
+@RequestMapping(value = "/bubbles")
 @RestController
 public class BubbleController {
     private final BubbleService bubbleService;
@@ -27,22 +29,20 @@ public class BubbleController {
         this.bubbleService = bubbleService;
     }
 
-    @PostMapping("/bubble")
+    @PostMapping("/upload")
     ApiResponse<String> uploadBubble(BubbleDTO bubbleDTO) {
         bubbleService.uploadBubble(bubbleDTO);
         return RestResultGenerator.genResult("上传成功", "ok");
     }
 
-    @GetMapping("/bubble/detail")
+    @GetMapping("/detail")
     ApiResponse<BubbleDetailVO> bubbleDetail(Integer id) {
         BubbleDetailVO bubbleDetailVO = bubbleService.getBubbleDetail(id);
-
-
         return RestResultGenerator.genResult(bubbleDetailVO, "ok");
     }
 
 
-    @GetMapping("/bubble/around")
+    @GetMapping("/around")
     ApiResponse<List<BubbleMapVO>> aroundBubble(Double lng, Double lat) {
         List<BubbleMapVO> bubbleMapVOS = bubbleService.selectBubbleByLocation(lng, lat);
         return RestResultGenerator.genResult(bubbleMapVOS, "ok");

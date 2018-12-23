@@ -2,8 +2,6 @@ package com.zjmeow.bubble.model.dto;
 
 import lombok.Data;
 
-import java.util.Date;
-
 /**
  * @description: 用户地理位置信息上传
  * @author: zjm
@@ -11,7 +9,6 @@ import java.util.Date;
 
 @Data
 public class LocationDTO {
-    private Date loginTime;
     private Double lat;
     private Double lng;
 }

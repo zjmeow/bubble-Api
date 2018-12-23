@@ -16,4 +16,5 @@ public class CommentVO {
     private Integer userId;
     private Integer tap;
     private String content;
+    private String username;
 }

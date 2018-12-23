@@ -2,6 +2,8 @@ package com.zjmeow.bubble.model.dto;
 
 import lombok.Data;
 
+import javax.validation.constraints.NotNull;
+
 /**
  * @description: 发表评论
  * @author: zjm
@@ -10,6 +12,8 @@ import lombok.Data;
 
 @Data
 public class CommentDTO {
-    private int bubbleId;
+    @NotNull
+    private Integer bubbleId;
+    @NotNull
     private String content;
 }

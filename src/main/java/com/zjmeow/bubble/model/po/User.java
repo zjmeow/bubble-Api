@@ -19,8 +19,6 @@ public class User implements Serializable {
 
     private Double lng;
 
-    private String token;
-
     private String avatar;
     private String psw;
     private String info;

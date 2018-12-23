@@ -18,5 +18,6 @@ public class Comment {
     private Integer userId;
     private Integer tap;
     private String content;
+    private String username;
 
 }

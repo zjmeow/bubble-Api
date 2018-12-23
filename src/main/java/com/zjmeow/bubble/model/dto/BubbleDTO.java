@@ -14,5 +14,4 @@ public class BubbleDTO {
     private String title;
     private String content;
     private String pic;
-    private Integer userId;
 }

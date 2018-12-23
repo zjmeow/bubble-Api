@@ -3,11 +3,15 @@ package com.zjmeow.bubble.service.impl;
 import com.zjmeow.bubble.dao.CommentMapper;
 import com.zjmeow.bubble.model.dto.CommentDTO;
 import com.zjmeow.bubble.model.po.Comment;
+import com.zjmeow.bubble.model.vo.CommentVO;
 import com.zjmeow.bubble.service.CommentService;
 import com.zjmeow.bubble.util.JWTUtil;
 import org.modelmapper.ModelMapper;
+import org.modelmapper.TypeToken;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
+
+import java.util.List;
 
 /**
  * @description: 评论服务层实现
@@ -32,5 +36,13 @@ public class CommentServiceImpl implements CommentService {
         Integer userId = JWTUtil.getCurrentUserId();
         comment.setUserId(userId);
         commentMapper.insertComment(comment);
+    }
+
+
+    @Override
+    public List<CommentVO> selectCommentByBubble(Integer id) {
+        List<Comment> comments = commentMapper.selectCommentByBubble(id);
+        return modelMapper.map(comments, new TypeToken<List<CommentVO>>() {
+        }.getType());
     }
 }

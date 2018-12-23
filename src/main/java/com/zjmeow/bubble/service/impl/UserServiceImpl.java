@@ -77,7 +77,6 @@ public class UserServiceImpl implements UserService {
         UserLocation location = new UserLocation();
         location.setId(JWTUtil.getCurrentUserId());
         location.setLocation("POINT(" + locationDTO.getLng() + " " + locationDTO.getLat() + ")");
-        location.setLoginTime(locationDTO.getLoginTime());
         userMapper.updateLocation(location);
     }
 

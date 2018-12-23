@@ -3,7 +3,6 @@ package com.zjmeow.bubble.model.vo;
 import lombok.Data;
 
 import java.util.Date;
-import java.util.List;
 
 /**
  * @description: bubble详情
@@ -22,5 +21,6 @@ public class BubbleDetailVO {
     private Date createdTime;
     private Integer tap;
     private Date deadline;
-    List<CommentVO> comments;
+    private String username;
+    private String avatar;
 }

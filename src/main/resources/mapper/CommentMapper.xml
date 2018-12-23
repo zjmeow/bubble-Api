@@ -7,7 +7,8 @@
         public.comment.user_id,
         public.comment.content,
         public.comment.tap,
-            public.user.avatar
+        public.user.avatar,
+        public.user.username
         FROM public.comment, public.user
         WHERE bubble_id = #{id} AND user_id = public.user.id
     </select>
