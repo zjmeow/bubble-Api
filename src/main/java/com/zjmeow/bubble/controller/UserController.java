@@ -11,6 +11,7 @@ import com.zjmeow.bubble.util.RestResultGenerator;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 
+import javax.validation.Valid;
 import javax.validation.constraints.NotNull;
 import java.util.List;
 
@@ -29,19 +30,19 @@ public class UserController {
     }
 
     @PostMapping("/avatar")
-    ApiResponse<String> uploadAvatar(AvatarDTO avatarDTO) {
+    ApiResponse<String> uploadAvatar(@Valid AvatarDTO avatarDTO) {
         userService.updateAvatar(avatarDTO);
         return RestResultGenerator.genResult("上传成功", "ok");
     }
 
     @PostMapping("/info")
-    ApiResponse<String> updateInfo(InfoDTO infoDTO) {
+    ApiResponse<String> updateInfo(@Valid InfoDTO infoDTO) {
         userService.updateInfo(infoDTO);
         return RestResultGenerator.genResult("修改成功", "ok");
     }
 
     @PostMapping("/location")
-    ApiResponse<String> updateLocation(LocationDTO locationDTO) {
+    ApiResponse<String> updateLocation(@Valid LocationDTO locationDTO) {
         userService.updateLocation(locationDTO);
         return RestResultGenerator.genResult("上传成功", "ok");
     }

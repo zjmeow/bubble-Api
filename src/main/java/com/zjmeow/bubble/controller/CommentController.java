@@ -6,18 +6,20 @@ import com.zjmeow.bubble.model.vo.CommentVO;
 import com.zjmeow.bubble.service.CommentService;
 import com.zjmeow.bubble.util.RestResultGenerator;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.validation.annotation.Validated;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
+import javax.validation.Valid;
 import java.util.List;
 
 /**
  * @description: 对bubble的评论
  * @author: zjm
  **/
-
+@Validated
 @RequestMapping(value = "/comments")
 @RestController
 public class CommentController {
@@ -29,7 +31,7 @@ public class CommentController {
     }
 
     @PostMapping("/comment")
-    ApiResponse<String> comment(CommentDTO commentDTO) {
+    ApiResponse<String> comment(@Valid CommentDTO commentDTO) {
         commentService.comment(commentDTO);
         return RestResultGenerator.genResult("发布成功", "ok");
     }

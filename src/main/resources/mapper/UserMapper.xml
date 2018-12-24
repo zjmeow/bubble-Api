@@ -43,6 +43,7 @@
         SELECT
             username,
             avatar,
+        login_time,
         id,
         st_x(location) AS lng,
         st_y(location) AS lat

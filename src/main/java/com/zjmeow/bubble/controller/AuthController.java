@@ -7,15 +7,19 @@ import com.zjmeow.bubble.model.vo.LoginVO;
 import com.zjmeow.bubble.service.UserService;
 import com.zjmeow.bubble.util.RestResultGenerator;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.validation.annotation.Validated;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
+
+import javax.validation.Valid;
 
 
 /**
  * @description: 登录注册控制器
  * @author: zjm
  **/
+@Validated
 @RequestMapping(value = "/auth")
 @RestController
 public class AuthController {
@@ -28,7 +32,7 @@ public class AuthController {
 
 
     @PostMapping("/login")
-    ApiResponse<LoginVO> login(LoginDTO loginDTO) {
+    ApiResponse<LoginVO> login(@Valid LoginDTO loginDTO) {
 
         return RestResultGenerator.genResult(userService.login(loginDTO), "ok");
 
@@ -36,7 +40,7 @@ public class AuthController {
 
 
     @PostMapping("/register")
-    ApiResponse<String> register(RegisterDTO registerDTO) {
+    ApiResponse<String> register(@Valid RegisterDTO registerDTO) {
         userService.register(registerDTO);
         return RestResultGenerator.genResult("注册成功", "ok");
     }

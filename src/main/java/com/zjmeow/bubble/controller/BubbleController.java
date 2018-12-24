@@ -8,18 +8,20 @@ import com.zjmeow.bubble.model.vo.BubbleMapVO;
 import com.zjmeow.bubble.service.BubbleService;
 import com.zjmeow.bubble.util.RestResultGenerator;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.validation.annotation.Validated;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
+import javax.validation.Valid;
 import java.util.List;
 
 /**
  * @description: 地图上的 bubble 控制器
  * @author: zjm
  **/
-
+@Validated
 @RequestMapping(value = "/bubbles")
 @RestController
 public class BubbleController {
@@ -31,7 +33,7 @@ public class BubbleController {
     }
 
     @PostMapping("/upload")
-    ApiResponse<String> uploadBubble(BubbleDTO bubbleDTO) {
+    ApiResponse<String> uploadBubble(@Valid BubbleDTO bubbleDTO) {
         bubbleService.uploadBubble(bubbleDTO);
         return RestResultGenerator.genResult("上传成功", "ok");
     }
