@@ -7,7 +7,7 @@ import javax.validation.constraints.NotNull;
 import javax.validation.constraints.Size;
 
 /**
- * @description:注册用DTO
+ * @description: 注册用DTO
  * @author: zjm
  **/
 

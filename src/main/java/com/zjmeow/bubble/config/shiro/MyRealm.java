@@ -3,8 +3,7 @@ package com.zjmeow.bubble.config.shiro;
 import com.zjmeow.bubble.dao.UserMapper;
 import com.zjmeow.bubble.model.po.User;
 import com.zjmeow.bubble.util.JWTUtil;
-import org.apache.logging.log4j.LogManager;
-import org.apache.logging.log4j.Logger;
+import lombok.extern.slf4j.Slf4j;
 import org.apache.shiro.authc.AuthenticationException;
 import org.apache.shiro.authc.AuthenticationInfo;
 import org.apache.shiro.authc.AuthenticationToken;
@@ -16,11 +15,9 @@ import org.apache.shiro.subject.PrincipalCollection;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
-
+@Slf4j
 @Service
 public class MyRealm extends AuthorizingRealm {
-
-    private static final Logger LOGGER = LogManager.getLogger(MyRealm.class);
 
     private UserMapper userMapper;
 

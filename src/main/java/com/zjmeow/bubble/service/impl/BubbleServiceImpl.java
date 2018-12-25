@@ -45,6 +45,7 @@ public class BubbleServiceImpl implements BubbleService {
     @Override
     public void uploadBubble(BubbleDTO bubbleDTO) {
         Bubble bubble = modelMapper.map(bubbleDTO, Bubble.class);
+        // 通过字符串拼接生成POINT，进而查找
         bubble.setPoint("POINT(" + bubble.getLng() + " " + bubble.getLat() + ")");
         bubble.setUserId(JWTUtil.getCurrentUserId());
         bubbleMapper.insert(bubble);

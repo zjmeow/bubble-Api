@@ -6,8 +6,10 @@ import java.io.Serializable;
 import java.util.Date;
 
 /**
- * @author
- */
+ * @description: 用户信息
+ * @author: zjm
+ **/
+
 @Data
 public class User implements Serializable {
     private static final long serialVersionUID = 1L;

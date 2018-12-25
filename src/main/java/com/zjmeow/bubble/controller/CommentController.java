@@ -41,5 +41,4 @@ public class CommentController {
         return RestResultGenerator.genResult(commentService.selectCommentByBubble(id), "ok");
     }
 
-
 }

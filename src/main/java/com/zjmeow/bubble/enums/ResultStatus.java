@@ -3,6 +3,11 @@ package com.zjmeow.bubble.enums;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
+/**
+ * @description: 自定义状态码对应的响应消息
+ * @author: zjm
+ **/
+
 public enum ResultStatus {
     // -1为通用失败（根据ApiResult.java中的构造方法注释而来）
     FAIL(-1, "common fail"),

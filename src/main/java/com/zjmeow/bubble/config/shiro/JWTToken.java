@@ -3,10 +3,9 @@ package com.zjmeow.bubble.config.shiro;
 import org.apache.shiro.authc.AuthenticationToken;
 
 /**
- * @description:
+ * @description:自定义登录token，里面包括了id和密码
  * @author: zjm
  **/
-
 
 public class JWTToken implements AuthenticationToken {
     private String token;

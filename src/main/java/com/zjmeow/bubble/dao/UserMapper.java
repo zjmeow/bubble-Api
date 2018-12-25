@@ -5,6 +5,11 @@ import com.zjmeow.bubble.model.po.UserLocation;
 
 import java.util.List;
 
+/**
+ * @description: 用户信息管理 dao层
+ * @author: zjm
+ **/
+
 public interface UserMapper {
     User selectUserByPhone(String phone);
 

@@ -30,12 +30,9 @@ public class AuthController {
         this.userService = userService;
     }
 
-
     @PostMapping("/login")
     ApiResponse<LoginVO> login(@Valid LoginDTO loginDTO) {
-
         return RestResultGenerator.genResult(userService.login(loginDTO), "ok");
-
     }
 
 

@@ -5,7 +5,7 @@ import lombok.Data;
 import java.util.Date;
 
 /**
- * @description: 评论PO
+ * @description: 对于分享信息的评论PO
  * @author: zjm
  **/
 

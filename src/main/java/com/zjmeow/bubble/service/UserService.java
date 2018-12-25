@@ -25,8 +25,16 @@ public interface UserService {
 
     void updateLocation(LocationDTO locationDTO);
 
+    /**
+     * @param id 用户的id
+     * @return : UserDetailVO
+     * @description: 通过 id 获取用户详细信息，对应客户端的用户详情页面
+     */
     UserDetailVO selectUserById(Integer id);
 
+    /**
+     * @description: 通过经纬度来获取附近的用户
+     */
     List<UserMapVO> selectUserByLocation(Double lng, Double lat);
 
 }

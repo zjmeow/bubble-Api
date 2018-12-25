@@ -6,6 +6,7 @@ import org.springframework.context.annotation.Configuration;
 
 /**
  * @description: swagger2 文档配置
+ * @author: zjm
  **/
 @Configuration
 public class ModelMapperConfig {

@@ -5,6 +5,11 @@ import com.fasterxml.jackson.annotation.JsonValue;
 import java.util.HashMap;
 import java.util.Map;
 
+/**
+ * @description: 返回响应枚举类
+ * @author: zjm
+ **/
+
 public enum ResponseErrorEnum {
     ILLEGAL_PARAMS("ILLEGAL_PARAMS", "请求参数不合法!"),
     INTERNAL_SERVER_ERROR("INTERNAL_SERVER_ERROR", "接口内部异常!");

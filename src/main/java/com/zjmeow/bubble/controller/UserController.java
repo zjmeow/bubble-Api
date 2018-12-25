@@ -41,13 +41,20 @@ public class UserController {
         return RestResultGenerator.genResult("修改成功", "ok");
     }
 
+    /**
+     * 更新用户位置，用户通过定时调用这个接口来在地图上形成移动的效果
+     * TODO:引入 redis 增加处理速度，避免每次都写入数据库，因为业务原因，可以每次登录后重新定位。
+     */
     @PostMapping("/location")
     ApiResponse<String> updateLocation(@Valid LocationDTO locationDTO) {
         userService.updateLocation(locationDTO);
         return RestResultGenerator.genResult("上传成功", "ok");
     }
 
-    // 获取附近的用户
+    /**
+     * 获取附近的用户，用户也是定时获取这个接口
+     * TODO:引入缓存避免每次都从数据库中拿出
+     */
     @GetMapping("/around")
     ApiResponse<List<UserMapVO>> getAround(@RequestParam("lng") @NotNull Double lng,
                                            @RequestParam("lat") @NotNull Double lat) {

@@ -24,8 +24,13 @@ import java.util.List;
 public class Swagger2Config {
     @Bean
     public Docket createRestApi() {
+        // 添加认证 Header
         ParameterBuilder builder = new ParameterBuilder();
-        builder.name("Authorization").description("token").modelRef(new ModelRef("string")).parameterType("header").required(false).build();
+        builder.name("Authorization").description("token")
+                .modelRef(new ModelRef("string"))
+                .parameterType("header")
+                .required(false)
+                .build();
         List<Parameter> parameters = new ArrayList<>();
         parameters.add(builder.build());
         return new Docket(DocumentationType.SWAGGER_2)
@@ -38,6 +43,7 @@ public class Swagger2Config {
                 ;
     }
 
+    // 网页上的文档信息设置
     private ApiInfo apiInfo() {
         return new ApiInfoBuilder()
                 .title("bubble")
