@@ -1,6 +1,7 @@
 package com.zjmeow.bubble.service.impl;
 
 import com.zjmeow.bubble.dao.CommentMapper;
+import com.zjmeow.bubble.dao.CounterMapper;
 import com.zjmeow.bubble.model.dto.CommentDTO;
 import com.zjmeow.bubble.model.po.Comment;
 import com.zjmeow.bubble.model.vo.CommentVO;
@@ -22,12 +23,15 @@ import java.util.List;
 public class CommentServiceImpl implements CommentService {
     private final ModelMapper modelMapper;
     private final CommentMapper commentMapper;
+    private final CounterMapper counterMapper;
 
     @Autowired
     public CommentServiceImpl(ModelMapper modelMapper,
-                              CommentMapper commentMapper) {
+                              CommentMapper commentMapper,
+                              CounterMapper counterMapper) {
         this.modelMapper = modelMapper;
         this.commentMapper = commentMapper;
+        this.counterMapper = counterMapper;
     }
 
     @Override
@@ -36,13 +40,15 @@ public class CommentServiceImpl implements CommentService {
         Integer userId = JWTUtil.getCurrentUserId();
         comment.setUserId(userId);
         commentMapper.insertComment(comment);
+        counterMapper.addCounter(commentDTO.getBubbleId());
     }
 
 
     @Override
     public List<CommentVO> selectCommentByBubble(Integer id) {
         List<Comment> comments = commentMapper.selectCommentByBubble(id);
-        return modelMapper.map(comments, new TypeToken<List<CommentVO>>() {
+        return modelMapper.map(comments,
+                new TypeToken<List<CommentVO>>() {
         }.getType());
     }
 }

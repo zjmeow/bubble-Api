@@ -22,5 +22,6 @@ public interface BubbleService {
 
     List<BubbleListVO> selectBubbleByUserId(Integer userId);
 
+    void addOneTap(Integer bubbleId);
 
 }

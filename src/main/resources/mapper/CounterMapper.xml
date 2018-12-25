@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.zjmeow.bubble.dao.CounterMapper">
+
+    <insert id="insertCounter">
+        INSERT INTO
+            counter (bubble_id, comment_num) VALUES (#{bubbleId}, 0)
+    </insert>
+
+    <update id="addCounter">
+        UPDATE counter
+        SET comment_num = comment_num + 1
+        WHERE bubble_id = #{id};
+    </update>
+
+    <select id="selectCounter" resultType="counter">
+        SELECT
+            bubble_id,
+            comment_num
+        FROM counter
+        WHERE bubble_id = #{bubbleId}
+    </select>
+</mapper>

@@ -1,6 +1,7 @@
 package com.zjmeow.bubble.controller;
 
 import com.zjmeow.bubble.model.dto.BubbleDTO;
+import com.zjmeow.bubble.model.dto.TapBubbleDTO;
 import com.zjmeow.bubble.model.vo.ApiResponse;
 import com.zjmeow.bubble.model.vo.BubbleDetailVO;
 import com.zjmeow.bubble.model.vo.BubbleListVO;
@@ -56,6 +57,13 @@ public class BubbleController {
     ApiResponse<List<BubbleListVO>> getBubbleByUserId(Integer userId) {
         List<BubbleListVO> bubbleListVOS = bubbleService.selectBubbleByUserId(userId);
         return RestResultGenerator.genResult(bubbleListVOS, "ok");
+    }
+
+
+    @PostMapping("/tap")
+    ApiResponse<String> tap(TapBubbleDTO tapBubbleDTO) {
+        bubbleService.addOneTap(tapBubbleDTO.getId());
+        return RestResultGenerator.genResult("点赞成功", "ok");
     }
 
 }

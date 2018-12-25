@@ -14,4 +14,6 @@ public interface BubbleMapper {
     List<Bubble> selectBubbleByLocation(String point);
 
     List<Bubble> selectBubbleByUserId(Integer userId);
+
+    int addOneTap(Integer bubbleId);
 }

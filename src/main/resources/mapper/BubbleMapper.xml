@@ -1,11 +1,12 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 <mapper namespace="com.zjmeow.bubble.dao.BubbleMapper">
-    <insert id="insert">
+    <insert id="insert" useGeneratedKeys="true" keyProperty="id">
         INSERT INTO bubble (title, content, pic, user_id, location)
         VALUES (#{title}, #{content}, #{pic}, #{userId}, ST_GeometryFromText(#{point}, 4326));
     </insert>
     <select id="selectBubbleById" resultType="Bubble">
+
         SELECT
         id,
         title,
@@ -50,6 +51,11 @@
         WHERE user_id = #{userId}
 
     </select>
+    <update id="addOneTap">
+        UPDATE bubble
+        SET tap = tap + 1
+        WHERE id = #{id};
+    </update>
 
 
 </mapper>

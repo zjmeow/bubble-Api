@@ -19,4 +19,5 @@ public class BubbleListVO {
     private Date createdTime;
     private String content;
     private Integer tap;
+    private Integer commentNum;
 }

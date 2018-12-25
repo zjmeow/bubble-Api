@@ -1,7 +1,7 @@
 package com.zjmeow.bubble.service.impl;
 
 import com.zjmeow.bubble.dao.BubbleMapper;
-import com.zjmeow.bubble.dao.CommentMapper;
+import com.zjmeow.bubble.dao.CounterMapper;
 import com.zjmeow.bubble.dao.UserMapper;
 import com.zjmeow.bubble.exception.ResourceNotFoundException;
 import com.zjmeow.bubble.model.dto.BubbleDTO;
@@ -28,18 +28,18 @@ import java.util.List;
 public class BubbleServiceImpl implements BubbleService {
     private final ModelMapper modelMapper;
     private final BubbleMapper bubbleMapper;
-    private final CommentMapper commentMapper;
     private final UserMapper userMapper;
+    private final CounterMapper counterMapper;
 
     @Autowired
     public BubbleServiceImpl(ModelMapper modelMapper,
                              BubbleMapper bubbleMapper,
-                             CommentMapper commentMapper,
-                             UserMapper userMapper) {
+                             UserMapper userMapper,
+                             CounterMapper counterMapper) {
         this.modelMapper = modelMapper;
         this.bubbleMapper = bubbleMapper;
-        this.commentMapper = commentMapper;
         this.userMapper = userMapper;
+        this.counterMapper = counterMapper;
     }
 
     @Override
@@ -48,6 +48,7 @@ public class BubbleServiceImpl implements BubbleService {
         bubble.setPoint("POINT(" + bubble.getLng() + " " + bubble.getLat() + ")");
         bubble.setUserId(JWTUtil.getCurrentUserId());
         bubbleMapper.insert(bubble);
+        counterMapper.insertCounter(bubble.getId());
     }
 
 
@@ -76,7 +77,16 @@ public class BubbleServiceImpl implements BubbleService {
     @Override
     public List<BubbleListVO> selectBubbleByUserId(Integer userId) {
         List<Bubble> bubbles = bubbleMapper.selectBubbleByUserId(userId);
-        return modelMapper.map(bubbles, new TypeToken<List<BubbleListVO>>() {
+        List<BubbleListVO> bubbleListVOS = modelMapper.map(bubbles, new TypeToken<List<BubbleListVO>>() {
         }.getType());
+        for (BubbleListVO bubble : bubbleListVOS) {
+            bubble.setCommentNum(counterMapper.selectCounter(bubble.getId()).getCommentNum());
+        }
+        return bubbleListVOS;
+    }
+
+    @Override
+    public void addOneTap(Integer bubbleId) {
+        bubbleMapper.addOneTap(bubbleId);
     }
 }
